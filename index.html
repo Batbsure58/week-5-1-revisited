@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<!--file creator: Robert Biery
+email robbiery@uat.edu
+for CSC102 class-->
+
+<!--Casino assignment
+    title: Straight 7s
+scene: as i walked in the casino i could smell the burning smell of cigerettes and liqour in the air.
+My type of place where people come accross the galaxay to lose their hard earned money but for me i wanted to find
+informantion. as i sat down a one of the blackjack tables i put my money on the table the dealer exhanged it for chips, 
+i noticed that his palms were becoming more sweaty not just from working but from noticeing that i was a cop looking for dirt........-->
+<html>
+
+<head>
+    <!--This is the head, 
+    none of this appears in the body of the page-->
+    <script src="dataLoader-1"> //$$$$$$$$$$$$$$$$$$$$$$$$you had forgotten the .js in dataLoader-1.js also something is misspelled in line 20 wrecking your style</script> 
+    <script src="code.js"></script>
+
+    <link href="style.css" rel="sytlesheet" type="text/css" />  
+
+    <title>
+        UATSpace 3
+    </title>
+</head>
+<script>
+    // this is a javascript comment
+    /*this is
+    a multiline
+    comment*/
+</script>
+
+<body>
+    <!--needed for the dom-->
+    <script>
+        var theTime = new Date();
+        var tempTime = new Date();
+        var time_interval = 5000;
+        var last_iteration = 0;
+        var running = true;
+        var index = 0;
+        var timer;
+        // to get data/
+        var Data = getData();
+
+        function updateDisplay() {
+            theTime = new Date();
+
+            var timeRead = data[index].time_seconds;
+            if (timeRead >= 10 ) {                    //$$$$$$$$$$$$$ it is innerHTML not innerHtml, i only fixed 1
+                document.getElementById("data").rows["seconds"].innerHTML = dataRow("Time Elapsed", data[index].time_seconds, "seconds")
+                document.getElementById("data").rows["latitude"].innerHTML = dataRow(" Latitude", data[index].Latitude, " ")
+                document.getElementById("data").rows["longitude"].innerHTML = dataRow("Longitude", data[index].Longitude, " ")
+                document.getElementById("data").rows["GPS Alitude"].innerHTML = dataRow(" GPS Alitude", data[index].gps_altitude, " ")
+                document.getElementById("data").rows["BMP Sensor Alitutde"].innerHTML = dataRow("BMP Sensor Alitutde", data[index].bmpsensor_altitude, " ")
+                document.getElementById("data").rows["BMP Sensor Pressure"].innerHTML = dataRow("BMP Sensor Pressure", data[index].bmpsensor_pressure, " ")
+                document.getElementById("data").rows["BMP Sensor Tempreture"].innerHTML = dataRow("BMP Sensor Tempreture", data[index]. bmpsensor_temp, " ")
+                document.getElementById("data").rows["Digital Sensor Tempreture"].innerHTML = dataRow("Digital Sensor Tempreture", data[index].digsensor_temp, " ")
+                document.getElementById("data").rows["CSS Sensor Tempreture"].innerHTML = dataRow("CSS Sensor Tempreture", data[index].csssensor_temp, " ")
+                document.getElementById("data").rows["CSS Sensor eCO2"].innerHTML = dataRow("CSS Sensor eCO2", data[index].csssensor_eco2, " ")
+                document.getElementById("data").rows["CSS Sensor TVOC"].innerHTML = dataRow("CSS Sensor TVOC", data[index].csssensor_TVOC, " ")
+                document.getElementById("data").rows["UV"].innerHTML = dataRow("UV", data[index].UV, " ")
+                document.getElementById("data").rows["Accel X"].innerHTML = dataRow("Accel X", data[index].accelX, " ")
+                document.getElementById("data").rows["Accel Y"].innerHTML = dataRow("Accel Y", data[index].accelY, " ")
+                document.getElementById("data").rows["Accel Z"].innerHTML = dataRow("Accel Z", data[index].accelZ, " ")
+                document.getElementById("data").rows["Magentic X"].innerHTML = dataRow("Magentic X", data[index].magneticX, " ")
+                document.getElementById("data").rows["Magentic Y"].innerHTML = dataRow("Magentic Y", data[index].magneticY, " ")
+                document.getElementById("data").rows["Magentic Z"].innerHTML = dataRow("Magentic Z", data[index].magneticZ, " ")
+                document.getElementById("data").rows["Gyro X"].innerHTML = dataRow("Gyro X", data[index].gyroX, " ")
+                document.getElementById("data").rows["Gyro Y"].innerHTML = dataRow("Gyro Y", data[index].gyroY, " ")
+                document.getElementById("data").rows["Gyro Z"].innerHTML = dataRow("Gyro Z", data[index].gyroZ, " ")
+                  
+            }
+            if(index < 500){
+                index++;
+            }else{
+                index = 0;
+        }
+
+
+    }
+    </script>
+    <!-- a table to put the image and h1 on the same line-->
+    <table>
+        <!--this is the picture -->
+        <td><img src="UATSpacelogo.jpg">
+        <td>
+            <!--this is the title-->
+            <h1>UAT Space Program</h1>
+        </td>
+
+        </td>
+    </table>
+    <table border="2" id="data" width="70%">
+        <col style="width: 35%;">
+        <col style="width: 35%;">
+        <thead>
+            <tr>
+                <th align="left">Data Type</th>
+                <th align="left">Reading</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr id="seconds"></tr>
+            <tr id="Latitude"></tr>
+            <tr id="Longitude"></tr>
+            <tr id="GPS Alitude"></tr>
+            <tr id="BMP Sensor Alitutde"></tr>
+            <tr id="BMP Sensor Pressure"></tr>
+            <tr id="BMP Sensor Tempreture"></tr>
+            <tr id="Digital Sensor Tempreture"></tr>
+            <tr id="CSS Sensor Tempreture"></tr>
+            <tr id="CSS Sensor eCO2"></tr>
+            <tr id="CSS Sensor TVOC"></tr>
+            <tr id="UV"></tr>
+            <tr id="Accel X"></tr>
+            <tr id="Accel Y"></tr>
+            <tr id="Accel Z"></tr>
+            <tr id="Magentic X"></tr>
+            <tr id="Magentic Y"></tr>
+            <tr id="Magentic Z"></tr>
+            <tr id="Gyro X"></tr>
+            <tr id="Gyro Y"></tr>
+            <tr id="Gyro Z"></tr>
+        </tbody>
+    </table>
+    <br>
+    <br>
+    <button class="button" id="startButton" onclick="start();">Start</button>
+    <button id="stopButton" onclick="stop();" class="button">Stop</button>
+    <br>
+    <br>
+    <h3 id="crapsResults">Results of the Craps Round</h3>
+    <br>
+    Die1 is: <div id="die1Res">needs to be rolled</div><br>
+    Die2 is: <div id="die2Res">needs to be rolled</div><br>
+    Sum of Die1 + Die2: <div id="sumRes"></div><br>
+    <button class="lgbutton" onclick="playcraps();">Play Craps</button>
+    <br>
+    <br>
+    <br>
+    <div id="sandboxDisplay">Sandbox Display</div>
+    <br>
+    <button class="sandbutton" onclick="runSandbox();">Try it!</button>
+
+</body>
+
+</html>
